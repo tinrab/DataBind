@@ -1,5 +1,5 @@
 # DataBind
-Simple data binding for unity
+Simple data binding for unity.
 
 ## Usage
 1. Import package file DataBind.unitypackage into Unity.
@@ -10,7 +10,7 @@ Simple data binding for unity
 Check out Demo/DemoScene for details.
 
 ## Custom Binds 
-Package contains components for binding UI Text, UI Image's sprite and UI Graphics's color. Custom binds can be created simply by implementing `IBndable` interface.
+Package contains components for binding UI Text, UI Image's sprite and UI Graphics's color. Custom binds can be created simply by implementing `IBindable` interface.
 
 ```csharp
 using UnityEngine;
