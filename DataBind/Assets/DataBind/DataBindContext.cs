@@ -5,11 +5,6 @@ public class DataBindContext : MonoBehaviour
 {
 	private IDictionary<string, object> m_ActiveBinds = new Dictionary<string, object>();
 
-	public void Bind(string key, object value)
-	{
-		m_ActiveBinds[key] = value;
-	}
-
 	public bool ContainsKey(string key)
 	{
 		return m_ActiveBinds.ContainsKey(key);
