@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/DataBind/Demo/DemoScene.unity
+  isLoaded: 1
+  isActive: 1
