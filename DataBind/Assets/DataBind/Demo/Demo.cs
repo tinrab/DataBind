@@ -1,17 +1,31 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Demo : MonoBehaviour
 {
+	class NumberItem
+	{
+		public int number { get; set; }
+	}
+
 	private DataBindContext m_Context;
+	private ObservableList m_NumberItems;
 
 	private void Awake()
 	{
 		m_Context = GetComponent<DataBindContext>();
+		m_NumberItems = new ObservableList();
+		m_Context["Items"] = m_NumberItems;
 	}
 
 	public void OnRandomNumberClick()
 	{
-		m_Context["Number"] = Random.Range(1, 101);
+		int n = Random.Range(1, 101);
+		m_Context["Number"] = n;
+
+		m_NumberItems.Add(new NumberItem {
+			number = n
+		});
 	}
 
 	public void OnRandomColorClick()

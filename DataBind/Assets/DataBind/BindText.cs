@@ -14,7 +14,7 @@ public class BindText : MonoBehaviour, IBindable
 		m_OriginalText = m_Text.text;
 	}
 
-	public void Bind(DataBindContext context)
+	public void Bind(DataContext context)
 	{
 		m_Text.text = Regex.Replace(m_OriginalText, @"\{\{[^}]*}}", m => {
 			var key = m.Value.Substring(2, m.Value.Length - 4);

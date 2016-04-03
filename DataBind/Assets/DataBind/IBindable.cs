@@ -1,4 +1,4 @@
 ﻿public interface IBindable
 {
-	void Bind(DataBindContext context);
+	void Bind(DataContext context);
 }

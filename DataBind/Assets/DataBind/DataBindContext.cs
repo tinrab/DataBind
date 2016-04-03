@@ -1,30 +1,39 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DataBindContext : MonoBehaviour
 {
-	private IDictionary<string, object> m_ActiveBinds = new Dictionary<string, object>();
+	private DataContext m_DataContext;
+
+	private void Awake()
+	{
+		m_DataContext = new DataContext();
+		m_DataContext.contextChanged += BindAll;
+	}
 
 	public bool ContainsKey(string key)
 	{
-		return m_ActiveBinds.ContainsKey(key);
+		return m_DataContext.ContainsKey(key);
 	}
 
 	public object this[string key] {
 		get {
-			return m_ActiveBinds[key];
+			return m_DataContext[key];
 		}
 		set {
-			if (value == null) {
-				return;
-			}
+			m_DataContext[key] = value;
+		}
+	}
 
-			m_ActiveBinds[key] = value;
-			var children = GetComponentsInChildren<IBindable>();
+	private void BindAll()
+	{
+		var children = GetComponentsInChildren<IBindable>();
 
-			for (int i = 0; i < children.Length; i++) {
-				children[i].Bind(this);
-			}
+		if (children == null) {
+			return;
+		}
+
+		for (int i = 0; i < children.Length; i++) {
+			children[i].Bind(m_DataContext);
 		}
 	}
 }
