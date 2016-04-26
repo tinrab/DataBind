@@ -100,10 +100,20 @@ public class BindProperty : MonoBehaviour
 
 		switch (m_Direction) {
 			case Direction.SourceUpdatesDestination:
-				m_CachedDestinationProperty.SetValue(m_Destination, m_CachedSourceProperty.GetValue(m_Source, null), null);
+				if (m_CachedDestinationProperty.PropertyType == typeof (string)) {
+					m_CachedDestinationProperty.SetValue(m_Destination, m_CachedSourceProperty.GetValue(m_Source, null).ToString(),
+						null);
+				} else {
+					m_CachedDestinationProperty.SetValue(m_Destination, m_CachedSourceProperty.GetValue(m_Source, null), null);
+				}
 				break;
 			case Direction.DestinationUpdatesSource:
-				m_CachedSourceProperty.SetValue(m_Source, m_CachedDestinationProperty.GetValue(m_Destination, null), null);
+				if (m_CachedSourceProperty.PropertyType == typeof (string)) {
+					m_CachedSourceProperty.SetValue(m_Source, m_CachedDestinationProperty.GetValue(m_Destination, null).ToString(),
+						null);
+				} else {
+					m_CachedSourceProperty.SetValue(m_Source, m_CachedDestinationProperty.GetValue(m_Destination, null), null);
+				}
 				break;
 		}
 	}
