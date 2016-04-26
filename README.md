@@ -44,3 +44,8 @@ public class BindPosition : MonoBehaviour, IBindable
 	}
 }
 ```
+
+## Bind any property
+You can bind any two properties using `BindProperty` component. Currently, there is no type checking. If destination property is of type `String`, then source will be converted using `ToString` method.
+
+![alt text](https://50bdf9794352d3405148f2b7972a1c29b0637e4e.googledrive.com/host/0B5dN6w6eVDL5TEgxclhmN083ZVU/BindProperty.png)
