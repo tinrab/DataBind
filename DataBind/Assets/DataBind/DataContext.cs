@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class DataContext
 {
-	public event Action contextChanged = delegate { };
+	public event Action<string> contextChanged = delegate { };
 	private IDictionary<string, object> m_ActiveBinds = new Dictionary<string, object>();
 
 	public bool ContainsKey(string key)
@@ -23,15 +23,10 @@ public class DataContext
 			m_ActiveBinds[key] = value;
 
 			if (value is INotifyCollectionChanged) {
-				((INotifyCollectionChanged)value).collectionChanged += OnCollectionChanged;
+				((INotifyCollectionChanged)value).collectionChanged += contextChanged;
 			}
 
-			contextChanged();
+			contextChanged(key);
 		}
-	}
-
-	private void OnCollectionChanged()
-	{
-		contextChanged();
 	}
 }

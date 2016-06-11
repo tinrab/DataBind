@@ -14,13 +14,15 @@ public class Demo : MonoBehaviour
 	private void Awake()
 	{
 		m_Context = GetComponent<DataBindContext>();
-		m_NumberItems = new ObservableList();
+		m_NumberItems = new ObservableList("Items");
 		m_Context["Items"] = m_NumberItems;
+
+	    m_Context["Number"] = 0;
 	}
 
 	public void OnRandomNumberClick()
 	{
-		int n = Random.Range(1, 101);
+		int n = Random.Range(1, 100000);
 		m_Context["Number"] = n;
 
 		m_NumberItems.Add(new NumberItem {
