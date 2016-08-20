@@ -12,7 +12,7 @@ Check out Demo/DemoScene for details.
 ## Bind Text
 Surround keys with double curly braces in UI Text and set values in parent `DataBindContext`
 
-![alt text](docs/Component.PNG)
+![alt text](docs/Component.png)
 
 ```csharp
 var context = GetComponent<DataBindContext>();
@@ -20,7 +20,7 @@ context["Username"] = "Bobby";
 ```
 Result:
 
-![alt text](docs/View.PNG)
+![alt text](docs/View.png)
 
 ## Custom Binds 
 Package contains components for binding UI Text, UI Image's sprite and UI Graphics's color. Custom binds can be created simply by implementing `IBindable` interface.
