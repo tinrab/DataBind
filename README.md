@@ -12,7 +12,7 @@ Check out Demo/DemoScene for details.
 ## Bind Text
 Surround keys with double curly braces in UI Text and set values in parent `DataBindContext`
 
-![alt text](https://50bdf9794352d3405148f2b7972a1c29b0637e4e.googledrive.com/host/0B5dN6w6eVDL5TEgxclhmN083ZVU/Capture.PNG)
+![alt text](docs/Component.PNG)
 
 ```csharp
 var context = GetComponent<DataBindContext>();
@@ -20,7 +20,7 @@ context["Username"] = "Bobby";
 ```
 Result:
 
-![alt text](https://50bdf9794352d3405148f2b7972a1c29b0637e4e.googledrive.com/host/0B5dN6w6eVDL5TEgxclhmN083ZVU/Capture2.PNG)
+![alt text](docs/View.PNG)
 
 ## Custom Binds 
 Package contains components for binding UI Text, UI Image's sprite and UI Graphics's color. Custom binds can be created simply by implementing `IBindable` interface.
@@ -48,4 +48,4 @@ public class BindPosition : MonoBehaviour, IBindable
 ## Bind any property
 You can bind any two properties using `BindProperty` component. Currently, there is no type checking. If destination property is of type `String`, then source will be converted using `ToString` method.
 
-![alt text](https://50bdf9794352d3405148f2b7972a1c29b0637e4e.googledrive.com/host/0B5dN6w6eVDL5TEgxclhmN083ZVU/BindProperty.png)
+![alt text](docs/BindProperty.png)
