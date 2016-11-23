@@ -45,15 +45,19 @@ public class BindText : MonoBehaviour, IBindable
             var target = m.Value.Substring(2, m.Value.Length - 4)
                           .Split(':');
             var key = target[0];
-            var val = context[key];
+            if (context.ContainsKey(key)) {
+                var val = context[key];
 
-            if (target.Length == 2 && context[key] is IFormattable) {
+                if (target.Length == 2 && val is IFormattable) {
                 var format = target[1];
 
-                return ((IFormattable)val).ToString(format, CultureInfo.CurrentCulture);
+                return ((IFormattable) val).ToString(format, CultureInfo.CurrentCulture);
+                }
+
+                return val.ToString();
             }
 
-            return val.ToString();
+            return "";
         });
     }
 }
